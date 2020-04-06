@@ -1,11 +1,19 @@
 package com.company.lab3;
 
-public abstract class PublicTransport {
+public abstract class PublicTransport extends Object {
 
     private int capacity;
     private int speed;
     private String number;
-    private double billCost;
+    private double fare;
+
+    public PublicTransport(int capacity, int speed, String number, double fare) {
+        this.capacity = capacity;
+        this.speed = speed;
+        this.number = number;
+        this.fare = fare;
+    }
+
 
     public int getCapacity() {
         return capacity;
@@ -31,22 +39,34 @@ public abstract class PublicTransport {
         this.number = number;
     }
 
-    public double getBillCost() {
-        return billCost;
+    public double getFare() {
+        return fare;
     }
 
-    public void setBillCost(double billCost) {
-        this.billCost = billCost;
+    public void setFare(double fare) {
+        this.fare = fare;
     }
 
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
 
-    public PublicTransport(int capacity, int speed, String number, double billCost) {
-        this.capacity = capacity;
-        this.speed = speed;
-        this.number = number;
-        this.billCost = billCost;
-        }
+        PublicTransport that = (PublicTransport) obj;
+
+        if (number != that.number) return false;
+        return number != null ? number.equals(that.number) : that.number == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = capacity;
+        result = 31 * result + (number != null ? number.hashCode() : 0);
+        return result;
+    }
+
+
 
 }
 
