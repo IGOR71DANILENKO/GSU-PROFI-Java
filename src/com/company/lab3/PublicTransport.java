@@ -1,15 +1,19 @@
 package com.company.lab3;
 
+import java.util.Objects;
+
 public abstract class PublicTransport extends Object {
 
-    private int capacity;
-    private int speed;
-    private String number;
-    private double fare;
+    private int capacity; //вместительность
+    private int speed;    //скорость
+    private String code;  // двухбуквенный код автомобильного номера
+    private int number;   // четырехзначный номер
+    private double fare;  // стоимость проезда
 
-    public PublicTransport(int capacity, int speed, String number, double fare) {
+    public PublicTransport(int capacity, int speed, String code, int number, double fare) {
         this.capacity = capacity;
         this.speed = speed;
+        this.code = code;
         this.number = number;
         this.fare = fare;
     }
@@ -31,11 +35,19 @@ public abstract class PublicTransport extends Object {
         this.speed = speed;
     }
 
-    public String getNumber() {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -46,26 +58,6 @@ public abstract class PublicTransport extends Object {
     public void setFare(double fare) {
         this.fare = fare;
     }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-
-        PublicTransport that = (PublicTransport) obj;
-
-        if (number != that.number) return false;
-        return number != null ? number.equals(that.number) : that.number == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = capacity;
-        result = 31 * result + (number != null ? number.hashCode() : 0);
-        return result;
-    }
-
 
 
 }
