@@ -22,22 +22,15 @@ public class Trolleybus extends PublicTransport {
         return linesVoltage;
     }
 
-    public Trolleybus(int capacity, int speed) {
-        this.capacity = capacity;
-        this.speed = speed;
-        setConductor(1);
-        set_trolleybusNumber("5000 AC-7");
-        set_linesVoltage(600);
-        setBillCost(.65);
+    public Trolleybus(int capacity, int speed, String number, double billCost, int linesVoltage) {
+        super(capacity, speed, number, billCost);
+        this.linesVoltage = linesVoltage;
     }
 
-    public String trolleybus_toString() {
-        if (conductorPresence()) {
-            return "Номер троллейбуса: " + get_trolleybusNumber() + "; " + "Скорость троллейбуса: " + speed + "; " + "Вместительность троллейбуса: " + capacity + "; " +
-                    "Напряжение линии: " + get_linesVoltage() + "; " + '\n' + "В салоне присутствует кондуктор!" + '\n' + "Стоимость проезда: " + getBillCost() + " рублей.";
-        } else return "Номер троллейбуса: " + get_trolleybusNumber() + "; " + "Скорость троллейбуса: " + speed + "; " + "Вместительность троллейбуса: " + capacity + "; " +
-                "Напряжение линии: " + get_linesVoltage() + "; " + '\n' + "Троллейбус осуществляет движение по маршруту без кандуктора, приобретайте билеты у водителя!"
-                + '\n' + "Стоимость проезда: " + getBillCost() + " рублей.";
+    @Override
+    public String toString() {
+        return "Троллейбус №:" + getNumber() + "(" + "скорость:" + getSpeed() + ";" + "вместительность:" + getCapacity()
+                +";" + "напряжение линии:" + get_linesVoltage() + ";" + "стоимость проезда:" + getBillCost() + " рублей)";
     }
 
 

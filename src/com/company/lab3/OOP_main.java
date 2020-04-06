@@ -4,12 +4,13 @@ public class OOP_main {
 
     public static void main(String[] args) {
 
-        Bus route20 = new Bus(90, 60);
-        System.out.println(route20.bus_toString());
+        Bus route20 = new Bus(100, 50, "AI5723", 0.60, 100);
+        System.out.println(route20.toString());
 
-        Trolleybus route10 = new Trolleybus(90, 50);
-        route10.setConductor(0);
-        System.out.println(route10.trolleybus_toString());
+        Trolleybus route10 = new Trolleybus(100, 50, "AZ5892", 0.65, 600);
+        System.out.println(route10.toString());
+
+
 
 
 
