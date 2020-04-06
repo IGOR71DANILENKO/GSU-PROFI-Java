@@ -36,7 +36,7 @@ public class Bus extends PublicTransport {
                get_tankVolume() == other.get_tankVolume();
     }
 
-    // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средст он будет уникален
+    // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален
     @Override
     public int hashCode() {
         return getNumber();
