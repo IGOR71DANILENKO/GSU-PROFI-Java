@@ -32,7 +32,7 @@ public class Trolleybus extends PublicTransport {
                 get_linesVoltage() == other.get_linesVoltage();
     }
 
-    // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средст он будет уникален
+    // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален
     @Override
     public int hashCode() {
         return getNumber();
