@@ -60,5 +60,29 @@ public abstract class PublicTransport extends Object {
     }
 
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PublicTransport other = (PublicTransport) obj;
+        return capacity == other.capacity &&
+                speed == other.speed &&
+                code.equals(other.code) &&
+                number == other.number &&
+                fare == other.fare;
+        }
+
+    // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален
+    @Override
+    public int hashCode() {
+        return number;
+    }
+
+    @Override
+    public String toString() {
+        return "Транспортное средство №:" + getCode() + "-" + getNumber() + "(" + "скорость:" + getSpeed() + ";" + "вместительность:" + getCapacity()
+                +";" + ";" + "стоимость проезда:" + getFare() + " рублей)";
+    }
+
 }
 

@@ -28,11 +28,7 @@ public class Bus extends PublicTransport {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
        Bus other = (Bus)obj;
-       return getCapacity() == other.getCapacity() &&
-               getSpeed() == other.getSpeed() &&
-               getCode().equals(other.getCode()) &&
-               getNumber() == (other.getNumber()) &&
-               getFare() == other.getFare() &&
+       return super.equals(other) &&
                get_tankVolume() == other.get_tankVolume();
     }
 

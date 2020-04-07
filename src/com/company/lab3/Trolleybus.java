@@ -24,12 +24,8 @@ public class Trolleybus extends PublicTransport {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Trolleybus other = (Trolleybus) obj;
-        return getCapacity() == other.getCapacity() &&
-                getSpeed() == other.getSpeed() &&
-                getCode().equals(other.getCode()) &&
-                getNumber() == (other.getNumber()) &&
-                getFare() == other.getFare() &&
-                get_linesVoltage() == other.get_linesVoltage();
+        return super.equals(other) &&
+               get_linesVoltage() == other.get_linesVoltage();
     }
 
     // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален

@@ -9,7 +9,7 @@ public class OOP_main {
         //проверка реализации equals и hashCode
 
         Bus f1 = new Bus (60,50, "AI", 55551, 0.60, 100);
-        Bus f2 = new Bus (60, 50, "AI",53551, 0.60, 100);
+        Bus f2 = new Bus (60, 50, "AR",50551, 0.60, 100);
 
         System.out.println(f1.equals(f2));
 
