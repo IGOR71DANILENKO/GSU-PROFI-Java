@@ -31,7 +31,9 @@ public class Menu {
                     case 4: printAll(); break;
                     case 0: return;
                 }
+            printHelp();
         }
+
     }
 
     private void addElement() {
@@ -48,6 +50,9 @@ public class Menu {
     }
 
     private void printAll() {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
 
     }
 
