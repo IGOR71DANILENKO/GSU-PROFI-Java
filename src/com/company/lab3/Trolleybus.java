@@ -10,11 +10,10 @@ public class Trolleybus extends PublicTransport {
         this.linesVoltage = linesVoltage;
     }
 
-    public void set_linesVoltage(int linesVoltage) {
+    public void setLinesVoltage(int linesVoltage) {
         this.linesVoltage = linesVoltage;
     }
-
-    public int get_linesVoltage() {
+    public int getLinesVoltage() {
         return linesVoltage;
     }
 
@@ -25,7 +24,7 @@ public class Trolleybus extends PublicTransport {
         if (obj == null || getClass() != obj.getClass()) return false;
         Trolleybus other = (Trolleybus) obj;
         return super.equals(other) &&
-               get_linesVoltage() == other.get_linesVoltage();
+               getLinesVoltage() == other.getLinesVoltage();
     }
 
     // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален
@@ -37,7 +36,7 @@ public class Trolleybus extends PublicTransport {
     @Override
     public String toString() {
         return "Троллейбус №:" + getCode() + "-" + getNumber() + "(" + "скорость:" + getSpeed() + ";" + "вместительность:" + getCapacity()
-                +";" + "напряжение линии:" + get_linesVoltage() + ";" + "стоимость проезда:" + getFare() + " рублей)";
+                +";" + "напряжение линии:" + getLinesVoltage() + ";" + "стоимость проезда:" + getFare() + " рублей)";
     }
 
 

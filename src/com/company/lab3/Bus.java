@@ -13,11 +13,11 @@ public class Bus extends PublicTransport {
 
 
 
-    public void set_tankVolume(int tankVolume) {
+    public void setTankVolume(int tankVolume) {
     this.tankVolume = tankVolume;
     }
 
-    public int get_tankVolume() {
+    public int getTankVolume() {
         return tankVolume;
     }
 
@@ -29,7 +29,7 @@ public class Bus extends PublicTransport {
         if (obj == null || getClass() != obj.getClass()) return false;
        Bus other = (Bus)obj;
        return super.equals(other) &&
-               get_tankVolume() == other.get_tankVolume();
+               getTankVolume() == other.getTankVolume();
     }
 
     // привязал значение хэшкода к номеру транспортного средства, уповая на то, что у всех транспортных средств он будет уникален
@@ -43,7 +43,7 @@ public class Bus extends PublicTransport {
     @Override
     public String toString() {
         return "Автобус №:" + getCode() + "-" + getNumber() + "(" + "скорость:" + getSpeed() + ";" + "вместительность:" + getCapacity()
-                +";" + "объем бака:" + get_tankVolume() + ";" + "стоимость проезда:" + getFare() + " рублей)";
+                +";" + "объем бака:" + getTankVolume() + ";" + "стоимость проезда:" + getFare() + " рублей)";
 
     }
 
