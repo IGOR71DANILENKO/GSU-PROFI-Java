@@ -1,4 +1,5 @@
 package com.company.lab3;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,8 @@ public class OOP_main {
         System.out.println(set.size());
         System.out.println(f1.hashCode());
         System.out.println(f2.hashCode());
+
+
 
 
 

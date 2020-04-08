@@ -6,9 +6,10 @@ public abstract class PublicTransport extends Object {
 
     private int capacity; //вместительность
     private int speed;    //скорость
-    private String code;  // двухбуквенный код автомобильного номера
+    private String code;// двухбуквенный код автомобильного номера
     private int number;   // четырехзначный номер
     private double fare;  // стоимость проезда
+
 
     public PublicTransport(int capacity, int speed, String code, int number, double fare) {
         this.capacity = capacity;
@@ -84,5 +85,30 @@ public abstract class PublicTransport extends Object {
                 +";" + ";" + "стоимость проезда:" + getFare() + " рублей)";
     }
 
-}
 
+    //попытки реализовать enum
+    public enum Root {
+        root17(" №17 (Медгородок - Микрорайон 'Кленковский')"),
+        root18(" №18 (Микрорайон 'Кленковский' - Центр радиационный медицины)"),
+        root20(" №20 (Медгородок - Старая Волотова)"),
+        root22(" №22 (Завод литья и нормалей - Микрорайон 'Любенский')"),
+        root25(" №25 (Медгородок - Завод самоходных комбайнов)");
+
+        private String title;
+
+        Root(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
+        public String toString() {
+            return "Маршрут" + title;
+        }
+
+    }
+
+}
