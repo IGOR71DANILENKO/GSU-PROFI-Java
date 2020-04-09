@@ -116,7 +116,7 @@ public class Menu {
 
     private void addElement() {
         create();
-        System.out.println("Элемент добавлен!");
+        System.out.println("Element added successfully!");
     }
 
     private void updateElement() {
@@ -150,7 +150,7 @@ public class Menu {
             a.setTankVolume(tankVolume);
 
 
-            System.out.println("Элемент обновлен!");
+
 
         } else {
             if (array[choice].getClass() == b.getClass()) {
@@ -178,7 +178,7 @@ public class Menu {
                 int linesVoltage = sc.nextInt();
                 b.setLinesVoltage(linesVoltage);
 
-                System.out.println("Элемент обновлен!");
+
 
             }
         }
@@ -187,14 +187,22 @@ public class Menu {
     private void deleteElement() {
         System.out.println("Input index");
         int choice = sc.nextInt();
-                }
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == array[choice]) {
+                array[i] = null;
+
+            }
+
+        }
+        System.out.println("Element deleted successfully!");
+    }
+
 
     private void printAll() {
         for (int i = 0; i < array.length; i++) {
-             if (array[i] == null) {
-                break;
-            }
-            System.out.println(array[i]);
+            if (array[i] != null)
+             System.out.println(array[i]);
         }
 
     }
