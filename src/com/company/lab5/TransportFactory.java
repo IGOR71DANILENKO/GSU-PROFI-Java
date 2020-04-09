@@ -4,7 +4,7 @@ public class TransportFactory {
 
     private ScannerWrapper sc = new ScannerWrapper();
 
-    public PublicTransport create() {
+    /*public PublicTransport create() {
         System.out.println("1 - create Bus");
         System.out.println("2 - create Trolleybus");
 
@@ -44,5 +44,7 @@ public class TransportFactory {
         return  result;
 
     }
+
+     */
 }
 
