@@ -122,6 +122,66 @@ public class Menu {
     private void updateElement() {
         System.out.println("Input index");
         int choice = sc.nextInt();
+        Bus a = new Bus(0, 0, "", 0, 0.6, 0);
+        Trolleybus b = new Trolleybus(0, 0, "", 0, 0.6, 0);
+        if (array[choice].getClass() == a.getClass()) {
+            array[choice] = a;
+
+            System.out.println("Input bus capacity:");
+            int capacity = sc.nextInt();
+            a.setCapacity(capacity);
+
+
+            System.out.println("Input bus speed:");
+            int speed = sc.nextInt();
+            a.setSpeed(speed);
+
+            System.out.println("Input bus number code:");
+            String code = sc.nextString();
+            a.setCode("--");
+            a.setCode(code);
+
+            System.out.println("Input bus number:");
+            int number = sc.nextInt();
+            a.setNumber(number);
+
+            System.out.println("Input bus tank volume:");
+            int tankVolume = sc.nextInt();
+            a.setTankVolume(tankVolume);
+
+
+            System.out.println("Элемент обновлен!");
+
+        } else {
+            if (array[choice].getClass() == b.getClass()) {
+                array[choice] = b;
+
+                System.out.println("Input trolleybus capacity:");
+                int capacity = sc.nextInt();
+                b.setCapacity(capacity);
+
+
+                System.out.println("Input trolleybus speed:");
+                int speed = sc.nextInt();
+                b.setSpeed(speed);
+
+                System.out.println("Input trolleybus number code:");
+                String code = sc.nextString();
+                b.setCode("--");
+                b.setCode(code);
+
+                System.out.println("Input trolleybus number:");
+                int number = sc.nextInt();
+                b.setNumber(number);
+
+                System.out.println("Input trolleybus lines voltage:");
+                int linesVoltage = sc.nextInt();
+                b.setLinesVoltage(linesVoltage);
+
+                System.out.println("Элемент обновлен!");
+
+            }
+        }
     }
 
     private void deleteElement() {
