@@ -81,7 +81,7 @@ public class Menu {
 
             System.out.println("Input bus number:");
             int number = sc.nextInt();
-            while (number <= 999 || number >= 9999) {
+            while (number <= 999 || number >= 10000) {
                 System.out.println("Error! Please type correct value! (4 digits)");
                 int numberCorrect = number;
                 numberCorrect = sc.nextInt();
@@ -136,7 +136,7 @@ public class Menu {
 
             System.out.println("Input trolleybus number:");
             int number = sc.nextInt();
-            while (number <= 999 || number >= 9999) {
+            while (number <= 999 || number >= 10000) {
                 System.out.println("Error! Please type correct value! (4 digits)");
                 int numberCorrect = number;
                 numberCorrect = sc.nextInt();
@@ -209,7 +209,7 @@ public class Menu {
 
             System.out.println("Input bus number:");
             int number = sc.nextInt();
-            while (number <= 999 || number >= 9999) {
+            while (number <= 999 || number >= 10000) {
                 System.out.println("Error! Please type correct value! (4 digits)");
                 int numberCorrect = number;
                 numberCorrect = sc.nextInt();
@@ -267,7 +267,7 @@ public class Menu {
 
                 System.out.println("Input trolleybus number:");
                 int number = sc.nextInt();
-                while (number <= 999 || number >= 9999) {
+                while (number <= 999 || number >= 10000) {
                     System.out.println("Error! Please type correct value! (4 digits)");
                     int numberCorrect = number;
                     numberCorrect = sc.nextInt();
