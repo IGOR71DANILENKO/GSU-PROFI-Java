@@ -46,13 +46,18 @@ public class Menu {
 
         PublicTransport result;
         if (choice2 == 1) {
-            Bus bus = new Bus(60,50,"AI",99934,0.60,100);
+            Bus bus = new Bus(0,0,"AI",99934,0.60,100);
             array[count++] = bus;
 
             System.out.println("Input bus capacity:");
             int capacity = sc.nextInt();
+            while (capacity <= 50 || capacity >= 100) {
+                int capacity1 = capacity;
+                System.out.println("Error! Please type correct value!");
+                capacity1 = sc.nextInt();
+                capacity = capacity1;
+            }
             bus.setCapacity(capacity);
-
 
             System.out.println("Input bus speed:");
             int speed = sc.nextInt();

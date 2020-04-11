@@ -17,6 +17,10 @@ public abstract class PublicTransport extends Object {
         this.fare = fare;
     }
 
+    public PublicTransport() {
+
+    }
+
 
     public int getCapacity() {
         return capacity;
