@@ -25,6 +25,12 @@ public class Menu {
 
         while (true) {
                 int choice = sc.nextInt();
+                    while (choice <= -1 || choice >= 5) {
+                        System.out.println("Error! Please type correct value! (0-4)");
+                        int choiceCorrect = choice;
+                        choiceCorrect = sc.nextInt();
+                        choice = choiceCorrect;
+                    }
 
                 switch (choice) {
                     case 1: addElement(); break;
@@ -51,29 +57,50 @@ public class Menu {
 
             System.out.println("Input bus capacity:");
             int capacity = sc.nextInt();
-            while (capacity <= 50 || capacity >= 100) {
-                int capacity1 = capacity;
-                System.out.println("Error! Please type correct value!");
-                capacity1 = sc.nextInt();
-                capacity = capacity1;
+            while (capacity <= 49 || capacity >= 101) {
+                System.out.println("Error! Please type correct value! (50-100)");
+                int capacityCorrect = capacity;
+                capacityCorrect = sc.nextInt();
+                capacity = capacityCorrect;
             }
             bus.setCapacity(capacity);
 
             System.out.println("Input bus speed:");
             int speed = sc.nextInt();
+            while (speed <= 59 || speed >= 91) {
+                System.out.println("Error! Please type correct value! (60-90)");
+                int speedCorrect = speed;
+                speedCorrect = sc.nextInt();
+                speed = speedCorrect;
+            }
             bus.setSpeed(speed);
 
             System.out.println("Input bus number code:");
             String code = sc.nextString();
-            bus.setCode("--");
             bus.setCode(code);
 
             System.out.println("Input bus number:");
             int number = sc.nextInt();
+            while (number <= 999 || number >= 9999) {
+                System.out.println("Error! Please type correct value! (4 digits)");
+                int numberCorrect = number;
+                numberCorrect = sc.nextInt();
+                number = numberCorrect;
+            }
             bus.setNumber(number);
+
+            System.out.println("Input bus fare:");
+            double fare = sc.nextDouble();
+            bus.setFare(fare);
 
             System.out.println("Input bus tank volume:");
             int tankVolume = sc.nextInt();
+            while (tankVolume <= 209 || tankVolume >= 401) {
+                System.out.println("Error! Please type correct value! (210-400)");
+                int tankVolumeCorrect = tankVolume;
+                tankVolumeCorrect = sc.nextInt();
+                tankVolume = tankVolumeCorrect;
+            }
             bus.setTankVolume(tankVolume);
 
             result = bus;
@@ -83,10 +110,22 @@ public class Menu {
 
             System.out.println("Input trolleybus capacity:");
             int capacity = sc.nextInt();
+            while (capacity <= 49 || capacity >= 101) {
+                System.out.println("Error! Please type correct value! (50-100)");
+                int capacityCorrect = capacity;
+                capacityCorrect = sc.nextInt();
+                capacity = capacityCorrect;
+            }
             trolleybus.setCapacity(capacity);
 
             System.out.println("Input trolleybus speed:");
             int speed = sc.nextInt();
+            while (speed <= 59 || speed >= 91) {
+                System.out.println("Error! Please type correct value! (60-90)");
+                int speedCorrect = speed;
+                speedCorrect = sc.nextInt();
+                speed = speedCorrect;
+            }
             trolleybus.setSpeed(speed);
 
 
@@ -97,6 +136,12 @@ public class Menu {
 
             System.out.println("Input trolleybus number:");
             int number = sc.nextInt();
+            while (number <= 999 || number >= 9999) {
+                System.out.println("Error! Please type correct value! (4 digits)");
+                int numberCorrect = number;
+                numberCorrect = sc.nextInt();
+                number = numberCorrect;
+            }
             trolleybus.setNumber(number);
 
             /*
@@ -107,6 +152,12 @@ public class Menu {
 
             System.out.println("Input trolleybus lines voltage:");
             int linesVoltage = sc.nextInt();
+            while (linesVoltage <= 549 || linesVoltage >= 601) {
+                System.out.println("Error! Please type correct value! (550-600)");
+                int linesVoltageCorrect = linesVoltage;
+                linesVoltageCorrect = sc.nextInt();
+                linesVoltage = linesVoltageCorrect;
+            }
             trolleybus.setLinesVoltage(linesVoltage);
 
             result = trolleybus;
@@ -127,63 +178,120 @@ public class Menu {
     private void updateElement() {
         System.out.println("Input index");
         int choice = sc.nextInt();
-        Bus a = new Bus(0, 0, "", 0, 0.6, 0);
-        Trolleybus b = new Trolleybus(0, 0, "", 0, 0.6, 0);
-        if (array[choice].getClass() == a.getClass()) {
-            array[choice] = a;
+        Bus bus = new Bus(0, 0, "", 0, 0.6, 0);
+        Trolleybus trolleybus = new Trolleybus(0, 0, "", 0, 0.6, 0);
+        if (array[choice].getClass() == bus.getClass()) {
+            array[choice] = bus;
 
             System.out.println("Input bus capacity:");
             int capacity = sc.nextInt();
-            a.setCapacity(capacity);
-
+            while (capacity <= 49 || capacity >= 101) {
+                System.out.println("Error! Please type correct value! (50-100)");
+                int capacityCorrect = capacity;
+                capacityCorrect = sc.nextInt();
+                capacity = capacityCorrect;
+            }
+            bus.setCapacity(capacity);
 
             System.out.println("Input bus speed:");
             int speed = sc.nextInt();
-            a.setSpeed(speed);
+            while (speed <= 59 || speed >= 91) {
+                System.out.println("Error! Please type correct value! (60-90)");
+                int speedCorrect = speed;
+                speedCorrect = sc.nextInt();
+                speed = speedCorrect;
+            }
+            bus.setSpeed(speed);
 
             System.out.println("Input bus number code:");
             String code = sc.nextString();
-            a.setCode("--");
-            a.setCode(code);
+            bus.setCode(code);
 
             System.out.println("Input bus number:");
             int number = sc.nextInt();
-            a.setNumber(number);
+            while (number <= 999 || number >= 9999) {
+                System.out.println("Error! Please type correct value! (4 digits)");
+                int numberCorrect = number;
+                numberCorrect = sc.nextInt();
+                number = numberCorrect;
+            }
+            bus.setNumber(number);
+
+            System.out.println("Input bus fare:");
+            double fare = sc.nextDouble();
+            bus.setFare(fare);
 
             System.out.println("Input bus tank volume:");
             int tankVolume = sc.nextInt();
-            a.setTankVolume(tankVolume);
+            while (tankVolume <= 209 || tankVolume >= 401) {
+                System.out.println("Error! Please type correct value! (210-400)");
+                int tankVolumeCorrect = tankVolume;
+                tankVolumeCorrect = sc.nextInt();
+                tankVolume = tankVolumeCorrect;
+            }
+            bus.setTankVolume(tankVolume);
 
 
+            System.out.println("Element updated successfully!");
 
 
         } else {
-            if (array[choice].getClass() == b.getClass()) {
-                array[choice] = b;
+            if (array[choice].getClass() == trolleybus.getClass()) {
+                array[choice] = trolleybus;
 
                 System.out.println("Input trolleybus capacity:");
                 int capacity = sc.nextInt();
-                b.setCapacity(capacity);
-
+                while (capacity <= 49 || capacity >= 101) {
+                    System.out.println("Error! Please type correct value! (50-100)");
+                    int capacityCorrect = capacity;
+                    capacityCorrect = sc.nextInt();
+                    capacity = capacityCorrect;
+                }
+                trolleybus.setCapacity(capacity);
 
                 System.out.println("Input trolleybus speed:");
                 int speed = sc.nextInt();
-                b.setSpeed(speed);
+                while (speed <= 59 || speed >= 91) {
+                    System.out.println("Error! Please type correct value! (60-90)");
+                    int speedCorrect = speed;
+                    speedCorrect = sc.nextInt();
+                    speed = speedCorrect;
+                }
+                trolleybus.setSpeed(speed);
+
 
                 System.out.println("Input trolleybus number code:");
                 String code = sc.nextString();
-                b.setCode("--");
-                b.setCode(code);
+                trolleybus.setCode(code);
+
 
                 System.out.println("Input trolleybus number:");
                 int number = sc.nextInt();
-                b.setNumber(number);
+                while (number <= 999 || number >= 9999) {
+                    System.out.println("Error! Please type correct value! (4 digits)");
+                    int numberCorrect = number;
+                    numberCorrect = sc.nextInt();
+                    number = numberCorrect;
+                }
+                trolleybus.setNumber(number);
+
+            /*
+            System.out.println("Input trolleybus fare:");
+            double fare = sc.nextDouble();
+            trolleybus.setFare(fare);
+             */
 
                 System.out.println("Input trolleybus lines voltage:");
                 int linesVoltage = sc.nextInt();
-                b.setLinesVoltage(linesVoltage);
+                while (linesVoltage <= 549 || linesVoltage >= 601) {
+                    System.out.println("Error! Please type correct value! (550-600)");
+                    int linesVoltageCorrect = linesVoltage;
+                    linesVoltageCorrect = sc.nextInt();
+                    linesVoltage = linesVoltageCorrect;
+                }
+                trolleybus.setLinesVoltage(linesVoltage);
 
-
+                System.out.println("Element updated successfully!");
 
             }
         }
