@@ -1,6 +1,6 @@
 package com.company.lab5;
 
-public abstract class PublicTransport extends Object {
+public abstract class PublicTransport extends PublicTransportContainer {
 
     private int capacity; //вместительность
     private int speed;    //скорость
