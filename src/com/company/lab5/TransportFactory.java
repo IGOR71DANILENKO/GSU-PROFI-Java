@@ -143,8 +143,6 @@ public class TransportFactory {
         trolleybus.setLinesVoltage(linesVoltage);
 
 
-
-
         storage.arrayMain[count++] = trolleybus;
 
         }
@@ -158,6 +156,7 @@ public class TransportFactory {
              storage.arrayMain[choice] = bus;
 
 
+             //пользовательский ввод параметра вместительности автобуса
              System.out.println("Input bus capacity:");
              int capacity = sc.nextInt();
              while (capacity <= 49 || capacity >= 101) {
@@ -168,6 +167,7 @@ public class TransportFactory {
              }
              bus.setCapacity(capacity);
 
+             //пользовательский ввод параметра скорости автобуса
              System.out.println("Input bus speed:");
              int speed = sc.nextInt();
              while (speed <= 59 || speed >= 91) {
@@ -178,10 +178,13 @@ public class TransportFactory {
              }
              bus.setSpeed(speed);
 
+             //пользовательский ввод серии госномера автобуса
              System.out.println("Input bus number code:");
+             String codeTest = sc.nextString();
              String code = sc.nextString();
              bus.setCode(code);
 
+             //пользовательский ввод цифр госномера автобуса
              System.out.println("Input bus number:");
              int number = sc.nextInt();
              while (number <= 999 || number >= 10000) {
@@ -192,10 +195,12 @@ public class TransportFactory {
              }
              bus.setNumber(number);
 
+             //пользовательский ввод стоимости проезда
              System.out.println("Input bus fare:");
              double fare = sc.nextDouble();
              bus.setFare(fare);
 
+             //пользовательский ввод параметра ёмкости бака автобуса
              System.out.println("Input bus tank volume:");
              int tankVolume = sc.nextInt();
              while (tankVolume <= 209 || tankVolume >= 401) {
@@ -205,10 +210,6 @@ public class TransportFactory {
                  tankVolume = tankVolumeCorrect;
              }
              bus.setTankVolume(tankVolume);
-
-
-             System.out.println("Element updated successfully!");
-
 
          } else {
              if (storage.arrayMain[choice].getClass() == trolleybus.getClass()) {
@@ -236,6 +237,7 @@ public class TransportFactory {
 
 
                  System.out.println("Input trolleybus number code:");
+                 String codeTest = sc.nextString();
                  String code = sc.nextString();
                  trolleybus.setCode(code);
 
@@ -250,11 +252,11 @@ public class TransportFactory {
                  }
                  trolleybus.setNumber(number);
 
-            /*
-            System.out.println("Input trolleybus fare:");
-            double fare = sc.nextDouble();
-            trolleybus.setFare(fare);
-             */
+
+                 System.out.println("Input trolleybus fare:");
+                 double fare = sc.nextDouble();
+                 trolleybus.setFare(fare);
+
 
                  System.out.println("Input trolleybus lines voltage:");
                  int linesVoltage = sc.nextInt();
@@ -266,8 +268,6 @@ public class TransportFactory {
                  }
                  trolleybus.setLinesVoltage(linesVoltage);
 
-                 System.out.println("Element updated successfully!");
-
              }
          }
         }
@@ -276,15 +276,19 @@ public class TransportFactory {
         System.out.println("Input index");
         int choice = sc.nextInt();
 
-        for (int i = 0; i < storage.arrayMain.length; i++) {
+
+
+            int count = storage.arrayMain.length;
+        for (int i = 0; i < count - 1; i++) {
             if (storage.arrayMain[i] == storage.arrayMain[choice]) {
-                storage.arrayMain[i] = null;
-
+                storage.arrayMain[i] = storage.arrayMain[i + 1];
             }
-
-        }
+            count--;
+            }
         System.out.println("Element deleted successfully!");
-    }
+        }
+
+
 
     public void printAll() {
 

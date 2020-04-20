@@ -5,8 +5,6 @@ public class PublicTransportContainer {
     public PublicTransport[] arrayMain = new PublicTransport[100];
     public int count = 0;
 
-
-    PublicTransport object;
     public void add(PublicTransport object) {
         arrayMain[count++] = object;
     }
