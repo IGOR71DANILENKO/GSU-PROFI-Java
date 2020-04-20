@@ -1,19 +1,22 @@
 package com.company.lab5;
 
 public class PublicTransportContainer {
-    public PublicTransport[] array = new PublicTransport[100];
+
+    public PublicTransport[] arrayMain = new PublicTransport[100];
     public int count = 0;
 
 
-    public void add(PublicTransport element) {
-        array[count++] = element;
+    PublicTransport object;
+    public void add(PublicTransport object) {
+        arrayMain[count++] = object;
     }
 
-
     public void printArray() {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null)
-                System.out.println(array[i]);
+        for (int i = 0; i < arrayMain.length; i++) {
+
+            if (arrayMain[i] != null)
+                System.out.println(arrayMain[i]);
+
         }
     }
 }

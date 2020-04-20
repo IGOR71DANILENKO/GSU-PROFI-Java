@@ -4,19 +4,10 @@ package com.company.lab5;
 public class Menu {
 
     private ScannerWrapper sc = new ScannerWrapper();
-    public int count = 0;
-
-
-    //по подсказке:
     private PublicTransportContainer storage = new PublicTransportContainer();
     private TransportFactory creator = new TransportFactory();
 
-
-
-
-
-
-
+    //меню
     private void printHelp() {
         System.out.println("1 - add element");
         System.out.println("2 - update element");
@@ -27,11 +18,12 @@ public class Menu {
         System.out.println("Введите число (от 0 до 4, в сооответствии с пунктами меню):");
     }
 
+    //фактически - главный метод программы
     public void run() {
         printHelp();
-
         while (true) {
                 int choice = sc.nextInt();
+                    //исключение ввода пользователем неверных значений
                     while (choice <= -1 || choice >= 5) {
                         System.out.println("Error! Please type correct value! (0-4)");
                         int choiceCorrect = choice;
@@ -39,6 +31,7 @@ public class Menu {
                         choice = choiceCorrect;
                     }
 
+                    //обработка команд, в соответствии с пунктами меню
                 switch (choice) {
                     case 1: addElement(); break;
                     case 2: updateElement(); break;
@@ -48,11 +41,9 @@ public class Menu {
                 }
             printHelp();
         }
-
     }
 
-
-
+    //методы CRUD
     private void addElement() {
         creator.create();
         System.out.println("Element added successfully!");
@@ -69,8 +60,7 @@ public class Menu {
     }
 
     private void printAll() {
-        storage.printArray();
-
+        creator.printAll();
     }
 
 }

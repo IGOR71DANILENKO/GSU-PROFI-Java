@@ -7,15 +7,13 @@ public class ScannerWrapper {
 
     public String nextString() {
         return sc.nextLine();
-    }
+    } // пользовательский ввод строк
 
     public int nextInt() {
         return sc.nextInt();
-    }
+    }  // пользовательский ввод чисел
 
-
-
-    public double nextDouble() { return sc.nextDouble(); }
+    public double nextDouble() { return sc.nextDouble(); } // пользовательский ввод дробных чисел
 
 
 

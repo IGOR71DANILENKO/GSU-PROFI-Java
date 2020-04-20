@@ -3,11 +3,8 @@ package com.company.lab5;
 public class TransportFactory {
 
     private ScannerWrapper sc = new ScannerWrapper();
-    private PublicTransport[] array = new PublicTransport[100];
-    public int count = 0;
     private PublicTransportContainer storage = new PublicTransportContainer();
-
-
+    public int count = 0;
 
     public void create() {
         System.out.println("1 - create Bus");
@@ -24,10 +21,11 @@ public class TransportFactory {
     }
 
     public void createBus() {
-        Bus bus = new Bus(0,0,"AI",99934,0.60,100);
-        //   array[count++] = bus;
 
+        //создание "пустого автобуса"
+       Bus bus = new Bus(0,0,"",0,0.60,0);
 
+        //пользовательский ввод параметра вместительности автобуса
         System.out.println("Input bus capacity:");
         int capacity = sc.nextInt();
         while (capacity <= 49 || capacity >= 101) {
@@ -38,6 +36,7 @@ public class TransportFactory {
         }
         bus.setCapacity(capacity);
 
+        //пользовательский ввод параметра скорости автобуса
         System.out.println("Input bus speed:");
         int speed = sc.nextInt();
         while (speed <= 59 || speed >= 91) {
@@ -48,11 +47,13 @@ public class TransportFactory {
         }
         bus.setSpeed(speed);
 
+        //пользовательский ввод серии госномера автобуса
         System.out.println("Input bus number code:");
         String codeTest = sc.nextString();
         String code = sc.nextString();
         bus.setCode(code);
 
+        //пользовательский ввод цифр госномера автобуса
         System.out.println("Input bus number:");
         int number = sc.nextInt();
         while (number <= 999 || number >= 10000) {
@@ -63,10 +64,12 @@ public class TransportFactory {
         }
         bus.setNumber(number);
 
+        //пользовательский ввод стоимости проезда
         System.out.println("Input bus fare:");
         double fare = sc.nextDouble();
         bus.setFare(fare);
 
+        //пользовательский ввод параметра ёмкости бака автобуса
         System.out.println("Input bus tank volume:");
         int tankVolume = sc.nextInt();
         while (tankVolume <= 209 || tankVolume >= 401) {
@@ -77,12 +80,14 @@ public class TransportFactory {
         }
         bus.setTankVolume(tankVolume);
 
-        storage.add(bus);
+        //заполнение массива класса-контейнера новым объектом
+        storage.arrayMain[count++] = bus;
+
     }
 
     public void createTrolleybus() {
         Trolleybus trolleybus = new Trolleybus(0, 0, "", 0, 0.60, 0);
-        array[count++] = trolleybus;
+//        array[count++] = trolleybus;
 
         System.out.println("Input trolleybus capacity:");
         int capacity = sc.nextInt();
@@ -106,6 +111,7 @@ public class TransportFactory {
 
 
         System.out.println("Input trolleybus number code:");
+        String codeTest = sc.nextString();
         String code = sc.nextString();
         trolleybus.setCode(code);
 
@@ -120,11 +126,11 @@ public class TransportFactory {
         }
         trolleybus.setNumber(number);
 
-            /*
-            System.out.println("Input trolleybus fare:");
-            double fare = sc.nextDouble();
-            trolleybus.setFare(fare);
-             */
+
+        System.out.println("Input trolleybus fare:");
+        double fare = sc.nextDouble();
+        trolleybus.setFare(fare);
+
 
         System.out.println("Input trolleybus lines voltage:");
         int linesVoltage = sc.nextInt();
@@ -136,7 +142,10 @@ public class TransportFactory {
         }
         trolleybus.setLinesVoltage(linesVoltage);
 
-      storage.add(trolleybus);
+
+
+
+        storage.arrayMain[count++] = trolleybus;
 
         }
 
@@ -145,8 +154,8 @@ public class TransportFactory {
          int choice = sc.nextInt();
          Bus bus = new Bus(0, 0, "", 0, 0.6, 0);
          Trolleybus trolleybus = new Trolleybus(0, 0, "", 0, 0.6, 0);
-         if (array[choice].getClass() == bus.getClass()) {
-             array[choice] = bus;
+         if (storage.arrayMain[choice].getClass() == bus.getClass()) {
+             storage.arrayMain[choice] = bus;
 
 
              System.out.println("Input bus capacity:");
@@ -202,8 +211,8 @@ public class TransportFactory {
 
 
          } else {
-             if (array[choice].getClass() == trolleybus.getClass()) {
-                 array[choice] = trolleybus;
+             if (storage.arrayMain[choice].getClass() == trolleybus.getClass()) {
+                 storage.arrayMain[choice] = trolleybus;
 
                  System.out.println("Input trolleybus capacity:");
                  int capacity = sc.nextInt();
@@ -267,9 +276,9 @@ public class TransportFactory {
         System.out.println("Input index");
         int choice = sc.nextInt();
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == array[choice]) {
-                array[i] = null;
+        for (int i = 0; i < storage.arrayMain.length; i++) {
+            if (storage.arrayMain[i] == storage.arrayMain[choice]) {
+                storage.arrayMain[i] = null;
 
             }
 
@@ -278,55 +287,15 @@ public class TransportFactory {
     }
 
     public void printAll() {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null)
-                System.out.println(array[i]);
+
+        for (int i = 0; i < storage.arrayMain.length; i++) {
+            if (storage.arrayMain[i] != null)
+                System.out.println(storage.arrayMain[i]);
+
         }
     }
+}
 
-    }
 
-    /*public PublicTransport create() {
-        System.out.println("1 - create Bus");
-        System.out.println("2 - create Trolleybus");
-
-        int choice = sc.nextInt();
-
-        PublicTransport result;
-        if (choice == 1) {
-            Bus bus = new Bus(60, 50, "AI", 55561, 0.60, 100);
-
-            System.out.println("Input bus number code");
-            String code = sc.nextLine();
-
-            bus.setCode(code);
-
-            System.out.println("Input bus number");
-            int number = sc.nextInt();
-
-            bus.setNumber(number);
-
-            result = bus;
-        } else {
-            Trolleybus trolleybus = new Trolleybus(60, 50, "VA", 04351, 0.60, 600);
-
-            System.out.println("Input bus number code");
-            String code = sc.nextLine();
-
-            trolleybus.setCode(code);
-
-            System.out.println("Input bus number");
-            int number = sc.nextInt();
-
-            trolleybus.setNumber(number);
-
-            result = trolleybus;
-        }
-
-        return  result;
-
-    }
-
-     */
 
 
