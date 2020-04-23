@@ -60,6 +60,7 @@ public class Menu {
     }
 
     private void printAll() {
+
         creator.printAll(); // вот так - работает
         // а если вызывать storage.printArray(), то при распечатке не показываются созданные объекты
     }

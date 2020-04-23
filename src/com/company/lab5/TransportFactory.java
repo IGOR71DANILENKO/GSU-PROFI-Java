@@ -1,10 +1,21 @@
 package com.company.lab5;
 
+import java.util.ArrayList;
+
 public class TransportFactory {
 
     private ScannerWrapper sc = new ScannerWrapper();
-    private PublicTransportContainer storage = new PublicTransportContainer();
+    private ArrayList<PublicTransport> base = new ArrayList<PublicTransport>();
+
     public int count = 0;
+
+    public void insertCapacity() {
+
+    }
+
+    public void insertSpeed() {
+
+    }
 
     public void create() {
         System.out.println("1 - create Bus");
@@ -26,23 +37,21 @@ public class TransportFactory {
        Bus bus = new Bus(0,0,"",0,0.60,0);
 
         //пользовательский ввод параметра вместительности автобуса
-        System.out.println("Input bus capacity:");
+        System.out.println("Input capacity:");
         int capacity = sc.nextInt();
         while (capacity <= 49 || capacity >= 101) {
             System.out.println("Error! Please type correct value! (50-100)");
-            int capacityCorrect = capacity;
-            capacityCorrect = sc.nextInt();
+            int capacityCorrect = sc.nextInt();
             capacity = capacityCorrect;
         }
         bus.setCapacity(capacity);
 
         //пользовательский ввод параметра скорости автобуса
-        System.out.println("Input bus speed:");
+        System.out.println("Input speed:");
         int speed = sc.nextInt();
         while (speed <= 59 || speed >= 91) {
             System.out.println("Error! Please type correct value! (60-90)");
-            int speedCorrect = speed;
-            speedCorrect = sc.nextInt();
+            int speedCorrect = sc.nextInt();
             speed = speedCorrect;
         }
         bus.setSpeed(speed);
@@ -81,7 +90,8 @@ public class TransportFactory {
         bus.setTankVolume(tankVolume);
 
         //заполнение массива класса-контейнера новым объектом
-        storage.arrayMain[count++] = bus;
+
+        base.add(bus);
 
     }
 
@@ -143,7 +153,7 @@ public class TransportFactory {
         trolleybus.setLinesVoltage(linesVoltage);
 
 
-        storage.arrayMain[count++] = trolleybus;
+        base.add(trolleybus);
 
         }
 
@@ -152,8 +162,8 @@ public class TransportFactory {
          int choice = sc.nextInt();
          Bus bus = new Bus(0, 0, "", 0, 0.6, 0);
          Trolleybus trolleybus = new Trolleybus(0, 0, "", 0, 0.6, 0);
-         if (storage.arrayMain[choice].getClass() == bus.getClass()) {
-             storage.arrayMain[choice] = bus;
+         if (base.get(choice).getClass() == bus.getClass()) {
+             base.set(choice, bus);
 
 
              //пользовательский ввод параметра вместительности автобуса
@@ -212,8 +222,8 @@ public class TransportFactory {
              bus.setTankVolume(tankVolume);
 
          } else {
-             if (storage.arrayMain[choice].getClass() == trolleybus.getClass()) {
-                 storage.arrayMain[choice] = trolleybus;
+             if (base.get(choice).getClass() == bus.getClass()) {
+                 base.set(choice, trolleybus);
 
                  System.out.println("Input trolleybus capacity:");
                  int capacity = sc.nextInt();
@@ -275,29 +285,14 @@ public class TransportFactory {
     public void deleteElement() {
         System.out.println("Input index");
         int choice = sc.nextInt();
-
-
-
-            int count = storage.arrayMain.length;
-        for (int i = 0; i < count - 1; i++) {
-            if (storage.arrayMain[i] == storage.arrayMain[choice]) {
-                storage.arrayMain[i] = storage.arrayMain[i + 1];
-            }
-            count--;
-            }
+        base.remove(choice);
         System.out.println("Element deleted successfully!");
         }
 
-
-
     public void printAll() {
-
-        for (int i = 0; i < storage.arrayMain.length; i++) {
-            if (storage.arrayMain[i] != null)
-                System.out.println(storage.arrayMain[i]);
-
+        System.out.println(base);
         }
-    }
+
 }
 
 
