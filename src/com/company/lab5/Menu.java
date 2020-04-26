@@ -1,4 +1,5 @@
 package com.company.lab5;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ public class Menu {
         System.out.println("3 - delete element");
         System.out.println("4 - print all");
         System.out.println("5 - save to file");
+        System.out.println("6 - load from file");
         System.out.println("0 - exit");
         System.out.println("---------------------");
         System.out.println("Введите число (от 0 до 4, в сооответствии с пунктами меню):");
@@ -29,7 +31,7 @@ public class Menu {
         while (true) {
                 int choice = sc.nextInt();
                     //исключение ввода пользователем неверных значений
-                    while (choice <= -1 || choice >= 6) {
+                    while (choice <= -1 || choice >= 7) {
                         System.out.println("Error! Please type correct value! (0-4)");
                         int choiceCorrect = choice;
                         choiceCorrect = sc.nextInt();
@@ -43,6 +45,7 @@ public class Menu {
                     case 3: deleteElement(); break;
                     case 4: printAll(); break;
                     case 5: writeFile(); break;
+                    case 6: loadFile(); break;
                     case 0: return;
                 }
             printHelp();
@@ -50,6 +53,11 @@ public class Menu {
     }
 
     //методы CRUD
+
+    private void loadFile() throws FileNotFoundException {
+        creator.loadFile();
+        System.out.println("File loaded successfully!");
+    }
 
     private void writeFile() {
         creator.writeFile();

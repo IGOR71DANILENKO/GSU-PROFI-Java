@@ -1,5 +1,7 @@
 package com.company.lab5;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,11 +35,19 @@ public class TransportFactory {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    public void loadFile() {
+        try (FileReader reader = new FileReader("base.txt")) {
+            int c;
+            while((c = reader.read()) != -1) {
+                System.out.print((char)c);
+                }
+            System.out.println("");
 
-
-
-
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
 
