@@ -1,11 +1,47 @@
 package com.company.lab5;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TransportFactory {
 
     private ScannerWrapper sc = new ScannerWrapper();
     private ArrayList<PublicTransport> base = new ArrayList<PublicTransport>();
+
+    /*
+    public void fileContent() {
+        int t = 0;
+        for (int i = 0; i < base.size(); i++) {
+
+            System.out.println(base.get(t));
+            t++;
+        }
+
+    }
+
+
+     */
+
+    public void writeFile() {
+        try(FileWriter writer = new FileWriter("base.txt", false)) {
+
+            writer.write(base.toString());
+
+            writer.flush();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+
+
+    }
+
+
+
 
     public int count = 0;
 
