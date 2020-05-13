@@ -87,6 +87,9 @@ public abstract class PublicTransport extends PublicTransportContainer {
                 +";" + ";" + "стоимость проезда:" + getFare() + " рублей)";
     }
 
+    public String toProtocolString() {
+        return getCode() + "|" + getNumber() + "|" + getCapacity() + "|" + getSpeed() + "|" + getFare();
+    }
 
     //попытки реализовать enum
     public enum Root {

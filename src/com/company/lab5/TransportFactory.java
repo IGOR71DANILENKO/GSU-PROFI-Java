@@ -33,8 +33,8 @@ public class TransportFactory {
             int i = 0;
 
             for (i = 0; i < base.size(); i++) {
-                writer.write(base.get(i).toString());
-                writer.write("\n");
+                writer.write(base.get(i).toProtocolString());
+//                writer.write("\n");
                 }
             i++;
 
@@ -50,14 +50,58 @@ public class TransportFactory {
     public void loadFile() {
         try (FileReader reader = new FileReader("base.txt")) {
             int c;
+            String targetString = "";
+
+            //внесли содержимое base.txt в строку targetString
             while((c = reader.read()) != -1) {
-                System.out.print((char)c);
+                targetString += (char) c;
                 }
-            System.out.println("");
+
+
+            //разделили targetString по объектам, массив string хранит записи объектов посимвольно
+            String[] string = targetString.split("---");
+
+
+
+            // цикл, "пробегающий по всем объектам"
+            for (int i = 0; i < string.length; i++) {
+                if ('b' == (string[i].charAt(0))) {
+                    Bus bus = new Bus(0, 0, "", 0, 0, 0);
+                    String[] stringDivider = string[i].split("\\|");
+
+                    bus.setCapacity(Integer.parseInt(stringDivider[3]));
+                    bus.setSpeed(Integer.parseInt(stringDivider[4]));
+                    bus.setCode(stringDivider[1]);
+                    bus.setNumber(Integer.parseInt(stringDivider[2]));
+                    bus.setFare(Double.parseDouble(stringDivider[5]));
+                    bus.setTankVolume(Integer.parseInt(stringDivider[6]));
+
+                    base.add(bus);
+
+                } else if ('t' == (string[i].charAt(0))) {
+                    Trolleybus trolleybus = new Trolleybus(0, 0, "", 0, 0, 0);
+                    String[] stringDivider = string[i].split("\\|");
+
+                    trolleybus.setCapacity(Integer.parseInt(stringDivider[3]));
+                    trolleybus.setSpeed(Integer.parseInt(stringDivider[4]));
+                    trolleybus.setCode(stringDivider[1]);
+                    trolleybus.setNumber(Integer.parseInt(stringDivider[2]));
+                    trolleybus.setFare(Double.parseDouble(stringDivider[5]));
+                    trolleybus.setLinesVoltage(Integer.parseInt(stringDivider[6]));
+
+
+                    base.add(trolleybus);
+
+                }
+            }
+
+
+
 
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
+
     }
 
 

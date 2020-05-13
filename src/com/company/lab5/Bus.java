@@ -43,6 +43,10 @@ public class Bus extends PublicTransport {
 
     }
 
+    public String toProtocolString() {
+        return "b|" + super.toProtocolString() + "|" + getTankVolume() + "---";
+    }
+
 
 
 

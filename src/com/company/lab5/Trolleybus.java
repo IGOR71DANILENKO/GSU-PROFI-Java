@@ -39,5 +39,9 @@ public class Trolleybus extends PublicTransport {
                 +";" + "напряжение линии:" + getLinesVoltage() + ";" + "стоимость проезда:" + getFare() + " рублей)";
     }
 
+    public String toProtocolString() {
+        return "t|" + super.toProtocolString() + "|" + getLinesVoltage() + "---";
+    }
+
 
 }
