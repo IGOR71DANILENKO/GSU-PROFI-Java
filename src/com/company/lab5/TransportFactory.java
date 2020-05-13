@@ -11,7 +11,9 @@ public class TransportFactory {
     private ScannerWrapper sc = new ScannerWrapper();
     private ArrayList<PublicTransport> base = new ArrayList<PublicTransport>();
 
-    /*
+
+
+       /*
     public void fileContent() {
         int t = 0;
         for (int i = 0; i < base.size(); i++) {
@@ -28,9 +30,17 @@ public class TransportFactory {
     public void writeFile() {
         try(FileWriter writer = new FileWriter("base.txt", false)) {
 
-            writer.write(base.toString());
+            int i = 0;
+
+            for (i = 0; i < base.size(); i++) {
+                writer.write(base.get(i).toString());
+                writer.write("\n");
+                }
+            i++;
+
 
             writer.flush();
+
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -335,8 +345,19 @@ public class TransportFactory {
         System.out.println("Element deleted successfully!");
         }
 
+
+
+
+
+
+
     public void printAll() {
-        System.out.println(base);
+
+        int i;
+        for (i = 0 ; i < base.size(); i++) {
+            System.out.println(base.get(i));
+            }
+        i++;
         }
 
 }
