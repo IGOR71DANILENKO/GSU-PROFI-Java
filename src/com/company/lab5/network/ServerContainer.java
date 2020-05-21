@@ -1,14 +1,18 @@
-package com.company.lab5;
+package com.company.lab5.network;
+
+
+import com.company.lab5.model.domain.PublicTransport;
+import com.company.lab5.network.Request;
+import com.company.lab5.network.Response;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ServerContainer {
 
@@ -16,7 +20,7 @@ public class ServerContainer {
     private static ArrayList<PublicTransport> list = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        executorService = Executor.newCachedThreadPool();
+        executorService = Executors.newCachedThreadPool();
         ServerSocket serverSocket = new ServerSocket(8080);
         System.out.println("server started");
 
@@ -41,32 +45,33 @@ public class ServerContainer {
                         communicate(ois, oos);
                     }
                 }  catch (IOException| ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    e.printStackTrace();
                 }
-            });
-        }
+            }
+        });
+    }
 
-        private  static void communicate(ObjectOutputStream ois, ObjectOutputStream oos) throws IOException, ClassNotFoundException {
+    private  static void communicate(ObjectInputStream ois, ObjectOutputStream oos) throws IOException, ClassNotFoundException {
 
 
         Request request = (Request) ois.readObject();
 
-            System.out.println(request);
+        System.out.println(request);
 
-            switch (request.getType()) {
-                case ADD: {
-                    PublicTransport element = (PublicTransport) request.getPayload();
-                    list.add(element);
-                    break;
-                }
-                case GET: {
-                    Response response = new Response(list);
-                    oos.writeObject(response);
-                    oos.flush();
-                }
+        switch (request.getType()) {
+            case ADD: {
+                PublicTransport element = (PublicTransport) request.getPayload();
+                list.add(element);
+                break;
             }
+            case GET: {
+                Response response = new Response(list);
+                oos.writeObject(response);
+                oos.flush();
+            }
+        }
 
 
     }
 }
+

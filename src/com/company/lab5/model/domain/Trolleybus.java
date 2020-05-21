@@ -1,4 +1,4 @@
-package com.company.lab5;
+package com.company.lab5.model.domain;
 
 public class Trolleybus extends PublicTransport {
 

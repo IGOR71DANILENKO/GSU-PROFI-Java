@@ -1,4 +1,5 @@
-package com.company.lab5;
+package com.company.lab5.network;
+import com.company.lab5.network.Type;
 
 import java.io.Serializable;
 

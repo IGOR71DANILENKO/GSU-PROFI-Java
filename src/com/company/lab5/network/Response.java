@@ -1,4 +1,4 @@
-package com.company.lab5;
+package com.company.lab5.network;
 import java.io.Serializable;
 
 public class Response implements Serializable {

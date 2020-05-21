@@ -1,6 +1,8 @@
-package com.company.lab5;
+package com.company.lab5.model.domain;
 
-public abstract class PublicTransport extends PublicTransportContainer {
+import java.io.Serializable;
+
+public abstract class PublicTransport <E extends PublicTransport<E>> implements Serializable {
 
     private int capacity; //вместительность
     private int speed;    //скорость
