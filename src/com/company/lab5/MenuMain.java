@@ -18,11 +18,12 @@ public class MenuMain {
         Factory<PublicTransport<?>> factory = new TransportFactory();
         Container<PublicTransport<?>> container = new NetworkClientContainer<PublicTransport<?>>("localhost", 8080);
 
-        MenuItem<PublicTransport<?>>[] items = new MenuItem[3];
+        MenuItem<PublicTransport<?>>[] items = new MenuItem[4];
 
         items[0] = new AddMenuItem<>(container, factory);
-        items[1] = new DeleteMenuItem<>(container);
-        items[2] = new PrintAllMenuItem<>(container);
+        items[1] = new UpdateMenuItem<>(container, factory);
+        items[2] = new DeleteMenuItem<>(container);
+        items[3] = new PrintAllMenuItem<>(container);
 
 
 

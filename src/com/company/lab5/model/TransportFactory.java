@@ -43,7 +43,6 @@ public class TransportFactory implements Factory<PublicTransport<?>> {
 
             //пользовательский ввод серии госномера автобуса
             System.out.println("Input bus number code:");
-            String codeTest = sc.nextLine();
             String code = sc.nextLine();
             bus.setCode(code);
 
@@ -74,8 +73,7 @@ public class TransportFactory implements Factory<PublicTransport<?>> {
             }
             bus.setTankVolume(tankVolume);
 
-            System.out.println("Input car power");
-            int power = sc.nextInt();
+
 
             result = bus;
 
@@ -106,7 +104,6 @@ public class TransportFactory implements Factory<PublicTransport<?>> {
 
 
             System.out.println("Input trolleybus number code:");
-            String codeTest = sc.nextLine();
             String code = sc.nextLine();
             trolleybus.setCode(code);
 
@@ -137,8 +134,6 @@ public class TransportFactory implements Factory<PublicTransport<?>> {
             }
             trolleybus.setLinesVoltage(linesVoltage);
 
-            System.out.println("Input truck weight");
-            int weight = sc.nextInt();
 
             result = trolleybus;
         }

@@ -1,28 +1,30 @@
 package com.company.lab5.menu;
-
 import com.company.lab5.utils.Container;
+import com.company.lab5.utils.Factory;
 import com.company.lab5.utils.ScannerWrapper;
 
-import java.sql.SQLOutput;
-
-public class DeleteMenuItem<T> implements MenuItem<T> {
+public class UpdateMenuItem<T> implements MenuItem<T> {
 
     private Container<T> container;
+    private Factory<T> factory;
     private ScannerWrapper sc = new ScannerWrapper();
 
 
-    public DeleteMenuItem(Container<T> container) {
+
+    public UpdateMenuItem(Container<T> container, Factory<T> factory) {
         this.container = container;
+        this.factory = factory;
     }
+
 
     @Override
     public int getOrder() {
-        return 3;
+        return 2;
     }
 
     @Override
     public String getTitle() {
-        return "Delete element";
+        return "Update element";
     }
 
     @Override
@@ -31,6 +33,7 @@ public class DeleteMenuItem<T> implements MenuItem<T> {
         int choice = sc.nextInt(0, container.size());
 
         container.delete(choice);
-        System.out.println("Element deleted successfully!");
+        container.set(choice, factory.create());
+
     }
 }

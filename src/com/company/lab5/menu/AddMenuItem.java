@@ -25,5 +25,6 @@ public class AddMenuItem<T> implements MenuItem<T> {
     @Override
     public void execute() {
         container.add(factory.create());
+        System.out.println("Element added successfully!");
     }
 }
