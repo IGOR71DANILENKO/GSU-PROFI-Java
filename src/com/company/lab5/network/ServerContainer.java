@@ -5,19 +5,19 @@ import com.company.lab5.model.domain.PublicTransport;
 import com.company.lab5.network.Request;
 import com.company.lab5.network.Response;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ServerContainer {
 
     private static ExecutorService executorService;
-    private static ArrayList<PublicTransport> list = new ArrayList<>();
+    private static CopyOnWriteArrayList<PublicTransport<?>> list = new CopyOnWriteArrayList<>();
 
     public static void main(String[] args) throws IOException {
         executorService = Executors.newCachedThreadPool();
@@ -44,14 +44,14 @@ public class ServerContainer {
                     while (true) {
                         communicate(ois, oos);
                     }
-                }  catch (IOException| ClassNotFoundException e) {
+                }  catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
     }
 
-    private  static void communicate(ObjectInputStream ois, ObjectOutputStream oos) throws IOException, ClassNotFoundException {
+    private static void communicate(ObjectInputStream ois, ObjectOutputStream oos) throws Exception {
 
 
         Request request = (Request) ois.readObject();
@@ -60,14 +60,31 @@ public class ServerContainer {
 
         switch (request.getType()) {
             case ADD: {
-                PublicTransport element = (PublicTransport) request.getPayload();
+                PublicTransport<?> element = (PublicTransport<?>) request.getPayload();
                 list.add(element);
+                oos.flush();
                 break;
             }
             case GET: {
-                Response response = new Response(list);
+                Response response = new Response(new ArrayList<>(list));
                 oos.writeObject(response);
                 oos.flush();
+                break;
+            }
+            case DELETE: {
+                int index = (Integer) request.getPayload();
+                list.remove(index);
+//                Response response = new Response(null);
+//                oos.writeObject(response);
+                oos.flush();
+                break;
+            }
+            case UPDATE: {
+                UpdatePayload updateData = (UpdatePayload) request.getPayload();
+                PublicTransport<?> element = (PublicTransport<?>) updateData.getElement();
+                list.set(updateData.getIndex(), element);
+                oos.flush();
+                break;
             }
         }
 

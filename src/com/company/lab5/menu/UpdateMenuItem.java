@@ -32,8 +32,7 @@ public class UpdateMenuItem<T> implements MenuItem<T> {
         System.out.println("Input index");
         int choice = sc.nextInt(0, container.size());
 
-        container.delete(choice);
         container.set(choice, factory.create());
-
+        System.out.println("Element updated successfully!");
     }
 }
